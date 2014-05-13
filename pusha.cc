@@ -7,8 +7,8 @@
 
 #define STANDALONE 1
 
-#include "CLHEP/Matrix/Vector.h"
-#include "CLHEP/Matrix/SymMatrix.h"
+//#include "CLHEP/Matrix/Vector.h"     // needed for FixedAlphaBetaAlgo... FIXME
+//#include "CLHEP/Matrix/SymMatrix.h"  // needed for FixedAlphaBetaAlgo... FIXME
 
 #ifndef STANDALONE
 #include "RecoLocalCalo/EcalRecAlgos/interface/EcalUncalibRecHitRecAbsAlgo.h"
@@ -26,8 +26,8 @@
 // to reconstruct with the FixedAlphaBeta fit algorithm
 // also change the definition of `algo' in the `main'
 // function below
-//#include "EcalUncalibRecHitFixedAlphaBetaAlgo.h"
-#include "EcalUncalibRecHitRecWeightsAlgo.h"
+#include "EcalUncalibRecHitFixedAlphaBetaAlgo.h"
+//#include "EcalUncalibRecHitRecWeightsAlgo.h"
 
 #endif
 
@@ -65,6 +65,7 @@ int main()
 
         // for FixedAlphaBeta fit
         //EcalUncalibratedRecHit urh(algo.makeRecHit(samples, pedVec, gainRatios, 0, 0));
+
         // provide weights for RecWeights algorithm
         // ** from trivial data/, _CMS flavour **
         EcalWeightSet::EcalWeightMatrix weights[2];
