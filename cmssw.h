@@ -186,8 +186,22 @@ class EcalUncalibratedRecHit {
 };
 
 
+#include "Math/SMatrix.h"
+#include "Math/SVector.h"
+
+namespace math {
+  template<unsigned int N, unsigned int M>
+  struct Matrix
+  {
+    typedef ROOT::Math::SMatrix<double,N,M> type;
+  };
+}
+
+typedef unsigned char EcalShapeBase;
+
 namespace EcalWeightSet {
-        typedef void EcalWeightMatrix;
+        //typedef void EcalWeightMatrix;
+        typedef math::Matrix<3,10>::type EcalWeightMatrix;
         typedef void EcalChi2WeightMatrix;
 }
 
