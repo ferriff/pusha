@@ -32,7 +32,6 @@
 #endif
 
 
-
 int main()
 {
         //typedef std::vector<float> EBDataFrame;
@@ -59,17 +58,6 @@ int main()
         samples.setSample(7, EcalMGPASample(296, 1));
         samples.setSample(8, EcalMGPASample(268, 1));
         samples.setSample(9, EcalMGPASample(245, 1));
-
-        //samples.setSample(0, EcalMGPASample(12, 200));
-        //samples.setSample(1, EcalMGPASample(12, 200));
-        //samples.setSample(2, EcalMGPASample(12, 200));
-        //samples.setSample(3, EcalMGPASample(12, 200));
-        //samples.setSample(4, EcalMGPASample(12, 200));
-        //samples.setSample(5, EcalMGPASample(12, 200));
-        //samples.setSample(6, EcalMGPASample(12, 200));
-        //samples.setSample(7, EcalMGPASample(12, 200));
-        //samples.setSample(8, EcalMGPASample(12, 200));
-        //samples.setSample(9, EcalMGPASample(12, 200));
 
         for (int i = 0; i < 10; ++i) {
                 printf("%d --> %d %d\n", i, samples[i].adc(), samples[i].gainId());
