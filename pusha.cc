@@ -7,7 +7,6 @@
 
 #define STANDALONE 1
 
-
 #include "CLHEP/Matrix/Vector.h"
 #include "CLHEP/Matrix/SymMatrix.h"
 
@@ -186,7 +185,7 @@ template<class C> EcalUncalibratedRecHit EcalUncalibRecHitFixedAlphaBetaAlgo<C>:
         /* std::cout << "separate fits\nA: " << fAmp_max_ << ", ResidualPed: " << fPed_max_
            <<", pedestal: "<<pedestal << ", tPeak " << fTim_max_ << std::endl;
            */
-        return EcalUncalibratedRecHit( dataFrame.id(),fAmp_max_, pedestal+fPed_max_, fTim_max_ - 5 , chi2_, flags );
+        return EcalUncalibratedRecHit(dataFrame.id(), fAmp_max_, pedestal + fPed_max_, fTim_max_ - 5, chi2_, flags );
 }
 
 template<class C> double EcalUncalibRecHitFixedAlphaBetaAlgo<C>::pulseShapeFunction(double t){
@@ -390,5 +389,46 @@ template<class C> void EcalUncalibRecHitFixedAlphaBetaAlgo<C>::SetDynamicPedesta
 
 int main()
 {
+        //typedef std::vector<float> EBDataFrame;
+        double pedVec[3] = {200., 200., 200.};
+        double gainRatios[3] = {1., 2., 6.};
+
+        EcalUncalibRecHitFixedAlphaBetaAlgo<EBDataFrame> algo;
+        EcalDigiCollection digi;
+        EBDetId id; // in case, one EBDetId is 838904341
+        digi.push_back(id.rawId());
+        EcalDataFrame samples(digi.back());
+
+        samples.setSample(0, EcalMGPASample(200, 1));
+        samples.setSample(1, EcalMGPASample(200, 1));
+        samples.setSample(2, EcalMGPASample(200, 1));
+        samples.setSample(3, EcalMGPASample(205, 1));
+        samples.setSample(4, EcalMGPASample(320, 1));
+        samples.setSample(5, EcalMGPASample(350, 1));
+        samples.setSample(6, EcalMGPASample(330, 1));
+        samples.setSample(7, EcalMGPASample(296, 1));
+        samples.setSample(8, EcalMGPASample(268, 1));
+        samples.setSample(9, EcalMGPASample(245, 1));
+
+        //samples.setSample(0, EcalMGPASample(12, 200));
+        //samples.setSample(1, EcalMGPASample(12, 200));
+        //samples.setSample(2, EcalMGPASample(12, 200));
+        //samples.setSample(3, EcalMGPASample(12, 200));
+        //samples.setSample(4, EcalMGPASample(12, 200));
+        //samples.setSample(5, EcalMGPASample(12, 200));
+        //samples.setSample(6, EcalMGPASample(12, 200));
+        //samples.setSample(7, EcalMGPASample(12, 200));
+        //samples.setSample(8, EcalMGPASample(12, 200));
+        //samples.setSample(9, EcalMGPASample(12, 200));
+
+        for (int i = 0; i < 10; ++i) {
+                printf("%d --> %d %d\n", i, samples[i].adc(), samples[i].gainId());
+        }
+
+        EcalUncalibratedRecHit urh(algo.makeRecHit(samples, pedVec, gainRatios, 0, 0));
+
+        printf("amplitude: %f %f %f\n", urh.amplitude(), urh.pedestal(), urh.jitter());
+        //std::cout << urh.amplitude() << " " <<  urh.pedestal() << " " <<  urh.jitter() << "\n";
+
         return 0;
 }
