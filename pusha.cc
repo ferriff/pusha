@@ -26,8 +26,8 @@
 // to reconstruct with the FixedAlphaBeta fit algorithm
 // also change the definition of `algo' in the `main'
 // function below
-#include "EcalUncalibRecHitFixedAlphaBetaAlgo.h"
-//#include "EcalUncalibRecHitRecWeightsAlgo.h"
+//#include "EcalUncalibRecHitFixedAlphaBetaAlgo.h"
+#include "EcalUncalibRecHitRecWeightsAlgo.h"
 
 #endif
 
