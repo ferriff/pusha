@@ -7,6 +7,6 @@ Standalone emulation of the ECAL local reconstruction for recHit amplitude and t
 Requires ROOT and CLHEP.
 Compile with
 
-   g++ pusha.cc `root-config --libs --cflags` `clhep-config --libs`
+   `g++ pusha.cc \`root-config --libs --cflags\` \`clhep-config --libs\``
 
 Enjoy.
