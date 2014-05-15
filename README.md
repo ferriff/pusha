@@ -14,4 +14,14 @@ The default version is running the `RecWeights` algo and can be compiled with:
 The switch between the two as well as other instructions on how to compile on
 `lxplus` using `CLHEP` will come later.
 
-Enjoy.
+To run `bias.cc` for the ideal amplitude and time bias studies, do the following:
+   * compile the needed library with
+     `g++ -shared -fPIC -o libEcalShapes.so EBShape.cc EEShape.cc EcalShapeBase.cc`
+   * compile and link this code with
+     `g++ bias.cc -L. -lEcalShapes`
+   * set the correct `LD_LIBRARY_PATH` with
+     `source ./setup.sh`
+   * run with
+     `./a.out > biases.dat`
+
+Enjoy. :)
