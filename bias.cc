@@ -16,12 +16,7 @@
 
 void biases(EcalShapeBase & shape, float * wA, float * wT)
 {
-        //EcalShapeBase & shape = ees;
-        //float * wA = wA_ee;
-        //float * wT = wT_ee;
-
-        //fprintf(stderr, "#EBShape: timeOfMax = %f; timeOfThr = %f\n", shape.timeOfMax(), shape.timeOfThr());
-        const double rT = shape.timeToRise() ;
+        //const double rT = shape.timeToRise() ;
         const double tm = shape.timeOfMax();   // w.r.t. timeOfThr()
         const double tT = shape.timeOfThr();
         //fprintf(stderr, "--> %f\n", shape(tm - tT)); // the position of the maximum
